@@ -3,7 +3,7 @@ purge files containing a timestamp in their name, like "myfile-2017-06-02.log"
 
 # Usage:
 
-java -jar jpurge -c `<config file>` -m [dry|exec] -r
+java -jar jpurge -c \<config file\> -m [dry|exec] -r
 
 ## Options
 * **c:**  config file  
@@ -25,9 +25,9 @@ Values :
     
 ### Example :  
   
-pattern=.+(20\\d\\d-\\d\\d-\\d\\d).*  
+pattern=.+(20\\\\d\\\\d-\\\\d\\\\d-\\\\d\\\\d).*  
 dateformat=yyyy-MM-dd  
 purge=35  
-directory=C:\\test_fl\\logs  
+directory=C:\\\\test_fl\\\\logs  
 
 => will purge all files older than 35 days containing a date like "20xx-mm-dd" in their name in the directory c:\test_fl\logs  
