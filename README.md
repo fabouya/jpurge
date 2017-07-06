@@ -3,11 +3,11 @@ purge files containing a timestamp in their name, like "myfile-2017-06-02.log"
 
 # Usage:
 
-java -jar jpurge -c <config file> -m [dry|exec] -r
+java -jar jpurge -c `<config file>` -m [dry|exec] -r
 
 ## Options
 * **c:**  config file  
-*  **m:**  mode, dry mode just show what will be purged, exec mode do the purge  
+* **m:**  mode, dry mode just show what will be purged, exec mode do the purge  
 * **r:**  recursive mode, follow directory's tree and purge files  
       
       
