@@ -25,9 +25,13 @@ Values :
     
 ### Example :  
   
-pattern=.+(20\\\\d\\\\d-\\\\d\\\\d-\\\\d\\\\d).*  
+pattern=.+**(**20\\\\d\\\\d-\\\\d\\\\d-\\\\d\\\\d**)**.*  
 dateformat=yyyy-MM-dd  
 purge=35  
 directory=C:\\\\test_fl\\\\logs  
 
+**Note : do not forget "(" on the regex, it is used to extract the date from the file name**
+
 => will purge all files older than 35 days containing a date like "20xx-mm-dd" in their name in the directory c:\test_fl\logs  
+
+

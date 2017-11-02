@@ -190,7 +190,7 @@ public class JPurge
                 	
             		if(list[i].isDirectory())
             		{
-                    	_logger.debug(list[i].getName() + " is a directory");
+                    	_logger.debug(list[i].getName() + " est un directory");
 
             			DoRecursePurge(list[i].getPath());
             		}
@@ -217,7 +217,7 @@ public class JPurge
 		  public boolean accept(File dir, String name) 
 		  {
 			  _matcher = pattern.matcher(name);
-			  _logger.debug("checking : " + name);
+			  _logger.debug("verification du nom : " + name);
 		    return _matcher.find();
 		  }
 		});				
@@ -253,7 +253,7 @@ public class JPurge
 					  	
 					  	if(diffjour >= _purge)
 					  	{					  		
-					  		_logger.info("Purge " + fichiers[i].getName() + "(" + diffjour + " jours)");
+					  		_logger.info("A Purger " + fichiers[i].getName() + "(" + diffjour + " jours)");
 					  		
 					  		if(!_drymode)
 					  		{
@@ -265,6 +265,12 @@ public class JPurge
 					  		}
 					  	}
 				  } 
+				  catch (java.lang.IndexOutOfBoundsException ei)
+				  {
+					  _logger.error(ei.getMessage());
+					  _logger.error("Erreur lors de l'extraction de la date, il manque surement des parenthese autour du modele dans la regex :" + _pattern);
+					  System.exit(3);					  
+				  }
 				  catch (java.text.ParseException e) 
 				  {
 						// TODO Auto-generated catch block
