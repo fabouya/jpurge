@@ -186,7 +186,7 @@ public class JPurge
             {
                 for ( int i = 0; i < list.length; i++) 
                 {
-                	_logger.debug("Checking for recurse: " + list[i].getName());
+                	//_logger.debug("Checking for recurse: " + list[i].getName());
                 	
             		if(list[i].isDirectory())
             		{
@@ -217,8 +217,20 @@ public class JPurge
 		  public boolean accept(File dir, String name) 
 		  {
 			  _matcher = pattern.matcher(name);
-			  _logger.debug("verification du nom : " + name);
-		    return _matcher.find();
+			  //_logger.debug("verification du nom : " + name);
+			  
+			  boolean match = _matcher.find(); 
+			  if(match)
+			  {
+				  _logger.debug(name + " : MATCH");
+			  }
+			  else
+			  {
+				  _logger.debug(name + " : NOT MATCH");
+				  
+			  }
+			  
+			  return match;
 		  }
 		});				
 		
@@ -246,6 +258,8 @@ public class JPurge
 				  try 
 				  {
 					  	Date date = formatter.parse(_matcher.group(1));
+					  	
+					  	_logger.debug("Date du fichier : " + _matcher.group(1));
 					  	
 					  	long diff = today.getTime() - date.getTime();
 					  	long diffSeconds = diff / 1000;
